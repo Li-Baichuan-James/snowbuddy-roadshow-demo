@@ -1,5 +1,4 @@
 import { DemoMap } from "../components/DemoMap";
-import { HudDisplay } from "../components/HudDisplay";
 import type { CompassHeading } from "../hooks/useCompassHeading";
 import type { DemoSession } from "../hooks/useDemoSession";
 import type { AppPage } from "../types";
@@ -36,8 +35,6 @@ export function MapPage({ session, navigate, compass }: MapPageProps) {
         </div>
         <button type="button" className="primary-button small" onClick={() => navigate("goggle")}>Track {selectedName} in HUD</button>
       </section>
-
-      <HudDisplay hud={session.hud} compact compass={compass} />
     </div>
   );
 }

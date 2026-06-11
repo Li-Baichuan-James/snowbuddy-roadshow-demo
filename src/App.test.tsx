@@ -61,7 +61,8 @@ describe("SnowBuddy roadshow flow", () => {
     expect(screen.getByRole("heading", { name: /team positions/i })).toBeInTheDocument();
     expect(screen.getByText(/map for context/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /track james in hud/i })).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: /map direction cue/i })).toBeInTheDocument();
+    expect(screen.queryByRole("img", { name: /map direction cue/i })).not.toBeInTheDocument();
+    expect(screen.queryByText(/current goggle cue/i)).not.toBeInTheDocument();
   });
 
   it("shows the goggle as sparse simulated output", async () => {

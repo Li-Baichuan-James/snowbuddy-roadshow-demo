@@ -1,8 +1,6 @@
 import { LocateFixed } from "lucide-react";
 import type { CompassHeading } from "../hooks/useCompassHeading";
 import type { DemoSession } from "../hooks/useDemoSession";
-import { getActiveDirectionTarget, getBearingDegrees, getRelativeAngle, SELF_MAP_POSITION } from "../lib/direction";
-import { CurvedDirectionArrow } from "./CurvedDirectionArrow";
 
 type DemoMapProps = {
   session: DemoSession;
@@ -11,9 +9,6 @@ type DemoMapProps = {
 
 export function DemoMap({ session, compass }: DemoMapProps) {
   const { state } = session;
-  const activeTarget = getActiveDirectionTarget(state);
-  const targetBearing = getBearingDegrees(SELF_MAP_POSITION, activeTarget);
-  const relativeAngle = getRelativeAngle(targetBearing, compass.heading);
 
   const getMarkerLabel = (member: DemoSession["state"]["members"][number]) => {
     if (member.status === "online") {
@@ -31,8 +26,6 @@ export function DemoMap({ session, compass }: DemoMapProps) {
         <path d="M3 65 C20 56, 40 68, 60 58 C78 48, 89 54, 97 62" />
         <path d="M12 88 C28 78, 48 89, 72 78 C84 72, 91 76, 98 82" />
       </svg>
-
-      <CurvedDirectionArrow relativeAngle={relativeAngle} variant={activeTarget.mode} size="map" label="Map direction cue" />
 
       <div className="map-note">Abstract slope view · {compass.statusLabel}</div>
 
