@@ -12,35 +12,34 @@ describe("SnowBuddy roadshow flow", () => {
   it("joins the demo and explains the prototype boundaries", async () => {
     render(<App />);
 
-    expect(screen.getByText(/simulated roadshow prototype/i)).toBeInTheDocument();
-    expect(screen.getByText(/no app download/i)).toBeInTheDocument();
-    expect(screen.getByText(/no gps/i)).toBeInTheDocument();
-    expect(screen.getByText(/no mic/i)).toBeInTheDocument();
-    expect(screen.getByText(/no hardware/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /smart cues for group skiing/i })).toBeInTheDocument();
+    expect(screen.getByText(/roadshow prototype/i)).toBeInTheDocument();
+    expect(screen.getByText(/no gps or account required/i)).toBeInTheDocument();
 
-    await userEvent.click(screen.getByRole("button", { name: /join demo team/i }));
+    await userEvent.click(screen.getByRole("button", { name: /join demo/i }));
 
     expect(screen.getByRole("heading", { name: /phone control hub/i })).toBeInTheDocument();
     expect(screen.getByText(/current goggle cue/i)).toBeInTheDocument();
     expect(screen.getByText("FOLLOW AVA")).toBeInTheDocument();
     expect(screen.getByRole("img", { name: /direction cue/i })).toBeInTheDocument();
     expect(screen.getByText(/simulated heading|compass live/i)).toBeInTheDocument();
+    expect(screen.getByText(/set the cue/i)).toBeInTheDocument();
   });
 
   it("shows clear action labels and SOS priority", async () => {
     render(<App />);
 
-    await userEvent.click(screen.getByRole("button", { name: /join demo team/i }));
+    await userEvent.click(screen.getByRole("button", { name: /join demo/i }));
 
-    expect(screen.getByRole("button", { name: /send meet point/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /simulate sos/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /send voice check/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^meet point$/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^sos$/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^voice check$/i })).toBeInTheDocument();
 
-    await userEvent.click(screen.getByRole("button", { name: /send meet point/i }));
+    await userEvent.click(screen.getByRole("button", { name: /^meet point$/i }));
     expect(screen.getByText("MEET POINT")).toBeInTheDocument();
     expect(screen.getByText(/meet point sent to team/i)).toBeInTheDocument();
 
-    await userEvent.click(screen.getByRole("button", { name: /simulate sos/i }));
+    await userEvent.click(screen.getByRole("button", { name: /^sos$/i }));
     await userEvent.click(screen.getByRole("button", { name: /activate sos from james/i }));
 
     expect(screen.getByText("SOS FROM JAMES")).toBeInTheDocument();
@@ -51,7 +50,7 @@ describe("SnowBuddy roadshow flow", () => {
   it("makes team selection and map-to-HUD relationship explicit", async () => {
     render(<App />);
 
-    await userEvent.click(screen.getByRole("button", { name: /join demo team/i }));
+    await userEvent.click(screen.getByRole("button", { name: /join demo/i }));
     await userEvent.click(screen.getByRole("button", { name: /james/i }));
 
     expect(screen.getByText(/tracking in hud/i)).toBeInTheDocument();
@@ -60,7 +59,7 @@ describe("SnowBuddy roadshow flow", () => {
     await userEvent.click(screen.getByRole("button", { name: /map/i }));
 
     expect(screen.getByRole("heading", { name: /team positions/i })).toBeInTheDocument();
-    expect(screen.getByText(/the map explains the cue/i)).toBeInTheDocument();
+    expect(screen.getByText(/map for context/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /track james in hud/i })).toBeInTheDocument();
     expect(screen.getByRole("img", { name: /map direction cue/i })).toBeInTheDocument();
   });
@@ -68,16 +67,15 @@ describe("SnowBuddy roadshow flow", () => {
   it("shows the goggle as sparse simulated output", async () => {
     render(<App />);
 
-    await userEvent.click(screen.getByRole("button", { name: /join demo team/i }));
+    await userEvent.click(screen.getByRole("button", { name: /join demo/i }));
 
     const nav = screen.getByRole("navigation", { name: /primary/i });
     await userEvent.click(within(nav).getByRole("button", { name: /goggle preview/i }));
 
     expect(screen.getByRole("heading", { name: /goggle preview/i })).toBeInTheDocument();
-    expect(screen.getByText(/what the skier sees/i)).toBeInTheDocument();
-    expect(screen.getByText(/no map/i)).toBeInTheDocument();
-    expect(screen.getByText(/just the next cue/i)).toBeInTheDocument();
+    expect(screen.getByText(/one cue at a time/i)).toBeInTheDocument();
     expect(screen.getByText(/simulated goggle output/i)).toBeInTheDocument();
     expect(screen.getByRole("img", { name: /goggle direction cue/i })).toBeInTheDocument();
+    expect(screen.getByLabelText(/simulated goggle output/i).querySelector(".goggle-frame.scenic-lens")).toBeInTheDocument();
   });
 });

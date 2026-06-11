@@ -16,11 +16,10 @@ export function HomePage({ session, navigate, compass }: HomePageProps) {
     <div className="page-stack home-page">
       <header className="page-header">
         <div>
-          <p className="demo-kicker">SnowBuddy DEMO</p>
           <h1>Phone Control Hub</h1>
-          <p className="page-subtitle">Send one team cue. The goggle keeps only what matters.</p>
+          <p className="page-subtitle">Set the cue. The goggle stays simple.</p>
         </div>
-        <button type="button" className="secondary-button" onClick={() => navigate("goggle")}>Preview HUD</button>
+        <button type="button" className="secondary-button" onClick={() => navigate("goggle")}>Preview</button>
       </header>
 
       <HudDisplay hud={session.hud} compass={compass} />

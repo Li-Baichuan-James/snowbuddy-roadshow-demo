@@ -23,7 +23,6 @@ export function ActionPanel({ session }: ActionPanelProps) {
     <section className="panel actions-panel" aria-labelledby="actions-title">
       <div className="section-heading stacked-heading">
         <div>
-          <p className="muted-label">Primary actions</p>
           <h2 id="actions-title">Control the team cue</h2>
         </div>
       </div>
@@ -31,24 +30,15 @@ export function ActionPanel({ session }: ActionPanelProps) {
       <div className="action-grid">
         <button type="button" className="action-button meet" onClick={session.triggerMeet}>
           <UsersRound size={20} aria-hidden="true" />
-          <span>
-            <strong>Send Meet Point</strong>
-            <small>Guide everyone to one regroup cue</small>
-          </span>
+          <span>Meet Point</span>
         </button>
         <button type="button" className="action-button sos" onClick={() => setSosOpen(true)}>
           <OctagonAlert size={20} aria-hidden="true" />
-          <span>
-            <strong>Simulate SOS</strong>
-            <small>Emergency overrides every cue</small>
-          </span>
+          <span>SOS</span>
         </button>
         <button type="button" className="action-button voice" onClick={session.triggerVoice}>
           <Mic2 size={20} aria-hidden="true" />
-          <span>
-            <strong>Send Voice Check</strong>
-            <small>Short message, no live call</small>
-          </span>
+          <span>Voice Check</span>
         </button>
       </div>
 

@@ -29,11 +29,9 @@ export function JoinPage({ onJoin }: JoinPageProps) {
         </div>
 
         <div className="join-hero-copy">
-          <p className="demo-kicker">Simulated roadshow prototype</p>
-          <h1 id="join-title">Smart goggle control for group skiing</h1>
-          <p className="prototype-note">
-            Join a local demo team and see how one phone cue becomes a low-distraction goggle HUD.
-          </p>
+          <p className="demo-kicker">Roadshow prototype</p>
+          <h1 id="join-title">Smart cues for group skiing.</h1>
+          <p className="prototype-note">No GPS or account required.</p>
         </div>
 
         <form className="join-form" onSubmit={submit}>
@@ -56,12 +54,10 @@ export function JoinPage({ onJoin }: JoinPageProps) {
           </label>
           {error && <p id="join-error" className="form-error">{error}</p>}
           <button type="submit" className="primary-button join-button">
-            Join Demo Team
+            Join Demo
             <ArrowRight size={19} aria-hidden="true" />
           </button>
         </form>
-
-        <p className="join-footnote">No app download. No account. No GPS. No mic. No hardware required.</p>
       </section>
     </main>
   );
