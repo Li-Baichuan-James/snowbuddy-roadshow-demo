@@ -11,9 +11,8 @@ export function GogglePage({ session }: GogglePageProps) {
     <div className="page-stack goggle-page">
       <header className="page-header">
         <div>
-          <p className="demo-kicker">What the skier sees</p>
           <h1>Goggle Preview</h1>
-          <p className="page-subtitle">No map. No feed. Just the next cue.</p>
+          <p className="page-subtitle">One cue at a time.</p>
         </div>
         <StatusPill tone="default">Prototype</StatusPill>
       </header>
@@ -21,9 +20,9 @@ export function GogglePage({ session }: GogglePageProps) {
       <GogglePreview hud={session.hud} />
 
       <section className="panel display-mode-panel goggle-explainer">
-        <span className="muted-label">Display Mode</span>
+        <span className="muted-label">Display mode</span>
         <strong>Arrow + Distance</strong>
-        <p>Only direction, distance, and emergency priority reach the simulated goggle display.</p>
+        <p>Direction, distance, and emergency priority only.</p>
       </section>
     </div>
   );

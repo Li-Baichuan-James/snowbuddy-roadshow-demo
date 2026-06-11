@@ -17,9 +17,8 @@ export function MapPage({ session, navigate }: MapPageProps) {
     <div className="page-stack map-page">
       <header className="page-header">
         <div>
-          <p className="demo-kicker">Simulated slope schematic</p>
           <h1>Team Positions</h1>
-          <p className="page-subtitle">The map explains the cue; the goggle keeps only direction and distance.</p>
+          <p className="page-subtitle">Map for context. HUD for motion.</p>
         </div>
       </header>
 

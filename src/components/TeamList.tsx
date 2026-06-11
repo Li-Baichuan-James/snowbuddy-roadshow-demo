@@ -13,7 +13,6 @@ export function TeamList({ members, selectedMemberId, onSelect }: TeamListProps)
     <section className="panel team-panel" aria-labelledby="team-title">
       <div className="section-heading stacked-heading">
         <div>
-          <p className="muted-label">Team</p>
           <h2 id="team-title">Tap a teammate to track in HUD</h2>
         </div>
         <StatusPill tone="success">4 members</StatusPill>

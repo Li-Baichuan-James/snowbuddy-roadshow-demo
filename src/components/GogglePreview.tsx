@@ -10,7 +10,7 @@ export function GogglePreview({ hud }: GogglePreviewProps) {
   return (
     <section className={`goggle-device ${hud.mode}`} aria-label="Simulated goggle output">
       <p className="goggle-device-label">Simulated goggle output</p>
-      <div className="goggle-frame">
+      <div className="goggle-frame scenic-lens">
         <div className="lens left-lens" />
         <div className="lens right-lens" />
         <div className="hud-window">
