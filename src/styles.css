@@ -371,6 +371,7 @@ button:disabled {
 }
 
 .curved-arrow {
+  --arrow-rotation: -45deg;
   display: block;
   overflow: visible;
   color: var(--primary);
@@ -395,25 +396,22 @@ button:disabled {
   pointer-events: none;
 }
 
-.curved-arrow-line,
-.curved-arrow-glow {
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.curved-arrow-line {
-  stroke-width: 5.4;
-}
-
-.curved-arrow-glow {
-  opacity: 0.22;
-  stroke-width: 13;
-}
-
-.curved-arrow-head {
-  fill: currentColor;
+.curved-arrow-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: currentColor;
+  -webkit-mask-image: var(--arrow-icon);
+  mask-image: var(--arrow-icon);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: rotate(var(--arrow-rotation));
+  transform-origin: center;
+  filter: drop-shadow(0 0 16px color-mix(in oklch, currentColor 24%, transparent));
 }
 
 .curved-arrow.meet {
