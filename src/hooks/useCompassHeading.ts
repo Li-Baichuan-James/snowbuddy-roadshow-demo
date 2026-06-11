@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { normalizeDegrees } from "../lib/direction";
+import { DEFAULT_INITIAL_HEADING, normalizeDegrees } from "../lib/direction";
 
 type DeviceOrientationWithCompass = DeviceOrientationEvent & {
   webkitCompassHeading?: number;
@@ -30,7 +30,7 @@ function getDeviceHeading(event: DeviceOrientationWithCompass): number | null {
 }
 
 export function useCompassHeading(): CompassHeading {
-  const [heading, setHeading] = useState(0);
+  const [heading, setHeading] = useState(DEFAULT_INITIAL_HEADING);
   const [source, setSource] = useState<"device" | "simulated">("simulated");
 
   useEffect(() => {

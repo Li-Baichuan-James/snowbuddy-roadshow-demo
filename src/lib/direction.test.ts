@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createInitialDemoState } from "./demoData";
 import {
+  DEFAULT_INITIAL_HEADING,
   SELF_MAP_POSITION,
   describeRelativeAngle,
   getActiveDirectionTarget,
@@ -27,6 +28,14 @@ describe("direction math", () => {
     expect(describeRelativeAngle(0)).toBe("straight ahead");
     expect(describeRelativeAngle(32)).toBe("32 degrees right");
     expect(describeRelativeAngle(-47)).toBe("47 degrees left");
+  });
+
+  it("aligns the initial simulated heading with the default follow target", () => {
+    const state = createInitialDemoState("Alex");
+    const target = getActiveDirectionTarget(state);
+    const targetBearing = getBearingDegrees(SELF_MAP_POSITION, target);
+
+    expect(getRelativeAngle(targetBearing, DEFAULT_INITIAL_HEADING)).toBe(0);
   });
 });
 

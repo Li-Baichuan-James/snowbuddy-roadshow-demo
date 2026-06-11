@@ -1,6 +1,7 @@
 import type { AppState, MapTarget } from "../types";
 
 export const SELF_MAP_POSITION: MapTarget = { mapX: 48, mapY: 54 };
+const DEFAULT_FOLLOW_TARGET: MapTarget = { mapX: 62, mapY: 30 };
 
 export type DirectionTarget = MapTarget & {
   mode: "follow" | "meet" | "sos";
@@ -20,6 +21,8 @@ export function getBearingDegrees(from: MapTarget, to: MapTarget): number {
   const radians = Math.atan2(to.mapX - from.mapX, from.mapY - to.mapY);
   return normalizeDegrees((radians * 180) / Math.PI);
 }
+
+export const DEFAULT_INITIAL_HEADING = getBearingDegrees(SELF_MAP_POSITION, DEFAULT_FOLLOW_TARGET);
 
 export function getRelativeAngle(targetBearing: number, phoneHeading: number): number {
   return normalizeRelativeAngle(targetBearing - phoneHeading);
