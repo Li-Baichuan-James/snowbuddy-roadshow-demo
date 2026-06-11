@@ -7,9 +7,9 @@ type BottomNavProps = {
 };
 
 const items = [
-  { id: "home" as const, label: "Home", icon: Home },
-  { id: "map" as const, label: "Map", icon: Map },
-  { id: "goggle" as const, label: "Goggle", icon: ScanLine }
+  { id: "home" as const, label: "Home", ariaLabel: "Home control hub", icon: Home },
+  { id: "map" as const, label: "Map", ariaLabel: "Team positions map", icon: Map },
+  { id: "goggle" as const, label: "Goggle", ariaLabel: "Goggle preview", icon: ScanLine }
 ];
 
 export function BottomNav({ page, onNavigate }: BottomNavProps) {
@@ -24,6 +24,7 @@ export function BottomNav({ page, onNavigate }: BottomNavProps) {
             className={page === item.id ? "nav-item active" : "nav-item"}
             onClick={() => onNavigate(item.id)}
             aria-current={page === item.id ? "page" : undefined}
+            aria-label={item.ariaLabel}
           >
             <Icon size={20} aria-hidden="true" />
             <span>{item.label}</span>
