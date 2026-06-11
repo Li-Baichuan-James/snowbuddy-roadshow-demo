@@ -24,6 +24,10 @@ export function getBearingDegrees(from: MapTarget, to: MapTarget): number {
 
 export const DEFAULT_INITIAL_HEADING = getBearingDegrees(SELF_MAP_POSITION, DEFAULT_FOLLOW_TARGET);
 
+export function calibrateDeviceHeading(initialDeviceHeading: number, currentDeviceHeading: number): number {
+  return normalizeDegrees(DEFAULT_INITIAL_HEADING + normalizeRelativeAngle(currentDeviceHeading - initialDeviceHeading));
+}
+
 export function getRelativeAngle(targetBearing: number, phoneHeading: number): number {
   return normalizeRelativeAngle(targetBearing - phoneHeading);
 }

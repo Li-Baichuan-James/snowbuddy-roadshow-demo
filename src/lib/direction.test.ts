@@ -3,6 +3,7 @@ import { createInitialDemoState } from "./demoData";
 import {
   DEFAULT_INITIAL_HEADING,
   SELF_MAP_POSITION,
+  calibrateDeviceHeading,
   describeRelativeAngle,
   getActiveDirectionTarget,
   getBearingDegrees,
@@ -36,6 +37,14 @@ describe("direction math", () => {
     const targetBearing = getBearingDegrees(SELF_MAP_POSITION, target);
 
     expect(getRelativeAngle(targetBearing, DEFAULT_INITIAL_HEADING)).toBe(0);
+  });
+
+  it("calibrates the first live compass reading to the default follow target", () => {
+    expect(calibrateDeviceHeading(180, 180)).toBeCloseTo(DEFAULT_INITIAL_HEADING, 5);
+  });
+
+  it("keeps live compass movement relative to the first reading", () => {
+    expect(calibrateDeviceHeading(180, 210)).toBeCloseTo(DEFAULT_INITIAL_HEADING + 30, 5);
   });
 });
 

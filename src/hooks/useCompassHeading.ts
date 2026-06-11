@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DEFAULT_INITIAL_HEADING, normalizeDegrees } from "../lib/direction";
+import { DEFAULT_INITIAL_HEADING, calibrateDeviceHeading, normalizeDegrees, normalizeRelativeAngle } from "../lib/direction";
 
 type DeviceOrientationWithCompass = DeviceOrientationEvent & {
   webkitCompassHeading?: number;
@@ -35,6 +35,7 @@ export function useCompassHeading(): CompassHeading {
 
   useEffect(() => {
     let receivedDeviceHeading = false;
+    let initialDeviceHeading: number | null = null;
     let cancelled = false;
 
     const handleOrientation = (event: DeviceOrientationEvent) => {
@@ -42,8 +43,12 @@ export function useCompassHeading(): CompassHeading {
       if (nextHeading === null) return;
 
       receivedDeviceHeading = true;
+      initialDeviceHeading ??= nextHeading;
       setSource("device");
-      setHeading((current) => current + (nextHeading - current) * 0.35);
+      setHeading((current) => {
+        const calibratedHeading = calibrateDeviceHeading(initialDeviceHeading ?? nextHeading, nextHeading);
+        return current + normalizeRelativeAngle(calibratedHeading - current) * 0.35;
+      });
     };
 
     const startListening = () => {
