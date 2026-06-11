@@ -27,7 +27,7 @@ export function MapPage({ session, navigate, compass }: MapPageProps) {
         </div>
       </header>
 
-      <DemoMap session={session} />
+      <DemoMap session={session} compass={compass} />
 
       <section className="panel selected-panel">
         <div>

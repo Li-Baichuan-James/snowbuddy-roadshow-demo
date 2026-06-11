@@ -710,6 +710,20 @@ button:disabled {
   stroke-width: 1.7;
 }
 
+.map-stage .curved-arrow-map {
+  color: oklch(0.77 0.13 205 / 0.9);
+  opacity: 0.82;
+  filter: drop-shadow(0 0 16px oklch(0.77 0.13 205 / 0.18));
+}
+
+.map-stage .curved-arrow-map.meet {
+  color: oklch(0.78 0.13 78 / 0.9);
+}
+
+.map-stage .curved-arrow-map.sos {
+  color: oklch(0.82 0.14 25 / 0.94);
+}
+
 .map-note {
   position: absolute;
   z-index: 2;
