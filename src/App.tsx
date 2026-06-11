@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BottomNav } from "./components/BottomNav";
+import { useCompassHeading } from "./hooks/useCompassHeading";
 import { useDemoSession } from "./hooks/useDemoSession";
 import { useLocalParticipant } from "./hooks/useLocalParticipant";
 import { GogglePage } from "./pages/GogglePage";
@@ -20,6 +21,7 @@ export default function App() {
   const [page, setPage] = useState<AppPage>(getInitialPage);
   const [showJoin, setShowJoin] = useState(() => window.location.pathname.includes("/join/"));
   const session = useDemoSession(participant, page);
+  const compass = useCompassHeading();
 
   function navigate(nextPage: AppPage) {
     setPage(nextPage);
@@ -38,9 +40,9 @@ export default function App() {
   return (
     <div className="app-shell">
       <main className="screen">
-        {page === "home" && <HomePage session={session} navigate={navigate} />}
-        {page === "map" && <MapPage session={session} navigate={navigate} />}
-        {page === "goggle" && <GogglePage session={session} />}
+        {page === "home" && <HomePage session={session} navigate={navigate} compass={compass} />}
+        {page === "map" && <MapPage session={session} navigate={navigate} compass={compass} />}
+        {page === "goggle" && <GogglePage session={session} compass={compass} />}
       </main>
       <BottomNav page={page} onNavigate={navigate} />
     </div>

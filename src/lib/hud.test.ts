@@ -10,7 +10,8 @@ describe("getCurrentHudPayload", () => {
       mode: "follow",
       label: "FOLLOW AVA",
       arrow: "↗",
-      distanceMeters: 84
+      distanceMeters: 84,
+      target: { mapX: 62, mapY: 30 }
     });
   });
 
@@ -49,7 +50,8 @@ describe("getCurrentHudPayload", () => {
       mode: "sos",
       label: "SOS FROM JAMES",
       arrow: "←",
-      distanceMeters: 45
+      distanceMeters: 45,
+      target: { mapX: 27, mapY: 62 }
     });
   });
 
@@ -79,7 +81,8 @@ describe("getCurrentHudPayload", () => {
       mode: "meet",
       label: "MEET POINT",
       arrow: "→",
-      distanceMeters: 128
+      distanceMeters: 128,
+      target: { mapX: 58, mapY: 42 }
     });
   });
 });
