@@ -23,6 +23,8 @@ describe("SnowBuddy roadshow flow", () => {
     expect(screen.getByRole("heading", { name: /phone control hub/i })).toBeInTheDocument();
     expect(screen.getByText(/current goggle cue/i)).toBeInTheDocument();
     expect(screen.getByText("FOLLOW AVA")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: /direction cue/i })).toBeInTheDocument();
+    expect(screen.getByText(/simulated heading|compass live/i)).toBeInTheDocument();
   });
 
   it("shows clear action labels and SOS priority", async () => {
@@ -75,5 +77,6 @@ describe("SnowBuddy roadshow flow", () => {
     expect(screen.getByText(/no map/i)).toBeInTheDocument();
     expect(screen.getByText(/just the next cue/i)).toBeInTheDocument();
     expect(screen.getByText(/simulated goggle output/i)).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: /goggle direction cue/i })).toBeInTheDocument();
   });
 });

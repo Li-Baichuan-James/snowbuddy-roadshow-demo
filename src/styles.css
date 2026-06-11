@@ -370,13 +370,6 @@ button:disabled {
   font-weight: 850;
 }
 
-.hud-arrow {
-  line-height: 0.9;
-  font-size: 7rem;
-  font-weight: 900;
-  color: var(--primary);
-}
-
 .curved-arrow {
   display: block;
   overflow: visible;
@@ -436,16 +429,13 @@ button:disabled {
   opacity: 0.72;
 }
 
-.hud-display.sos .hud-arrow {
-  color: oklch(0.82 0.14 25);
+.hud-display .curved-arrow {
+  margin: 4px auto 0;
 }
 
-.hud-display.meet .hud-arrow {
-  color: var(--meet);
-}
-
-.hud-display.voice .hud-arrow {
-  color: var(--primary);
+.hud-display.compact .curved-arrow {
+  width: 106px;
+  height: 106px;
 }
 
 .hud-distance {
@@ -885,14 +875,7 @@ button:disabled {
   font-weight: 900;
 }
 
-.goggle-arrow {
-  font-size: 4.6rem;
-  line-height: 0.9;
-  font-weight: 900;
-}
-
-.goggle-device.meet .hud-window,
-.goggle-device.meet .goggle-arrow {
+.goggle-device.meet .hud-window {
   color: var(--meet);
 }
 
@@ -901,8 +884,8 @@ button:disabled {
   background: oklch(0.12 0.04 25 / 0.88);
 }
 
-.goggle-device.sos .goggle-arrow {
-  color: oklch(0.82 0.14 25);
+.hud-window .curved-arrow {
+  margin: -2px auto -4px;
 }
 
 .goggle-distance {

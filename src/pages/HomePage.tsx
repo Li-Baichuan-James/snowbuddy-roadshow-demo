@@ -12,8 +12,6 @@ type HomePageProps = {
 };
 
 export function HomePage({ session, navigate, compass }: HomePageProps) {
-  void compass;
-
   return (
     <div className="page-stack home-page">
       <header className="page-header">
@@ -25,7 +23,7 @@ export function HomePage({ session, navigate, compass }: HomePageProps) {
         <button type="button" className="secondary-button" onClick={() => navigate("goggle")}>Preview HUD</button>
       </header>
 
-      <HudDisplay hud={session.hud} />
+      <HudDisplay hud={session.hud} compass={compass} />
       <ActionPanel session={session} />
 
       {session.state.activeVoice && (

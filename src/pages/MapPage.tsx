@@ -38,7 +38,7 @@ export function MapPage({ session, navigate, compass }: MapPageProps) {
         <button type="button" className="primary-button small" onClick={() => navigate("goggle")}>Track {selectedName} in HUD</button>
       </section>
 
-      <HudDisplay hud={session.hud} compact />
+      <HudDisplay hud={session.hud} compact compass={compass} />
     </div>
   );
 }
