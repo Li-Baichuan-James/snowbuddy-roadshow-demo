@@ -1,15 +1,19 @@
 import { ActionPanel } from "../components/ActionPanel";
 import { HudDisplay } from "../components/HudDisplay";
 import { TeamList } from "../components/TeamList";
+import type { CompassHeading } from "../hooks/useCompassHeading";
 import type { DemoSession } from "../hooks/useDemoSession";
 import type { AppPage } from "../types";
 
 type HomePageProps = {
   session: DemoSession;
   navigate: (page: AppPage) => void;
+  compass: CompassHeading;
 };
 
-export function HomePage({ session, navigate }: HomePageProps) {
+export function HomePage({ session, navigate, compass }: HomePageProps) {
+  void compass;
+
   return (
     <div className="page-stack home-page">
       <header className="page-header">

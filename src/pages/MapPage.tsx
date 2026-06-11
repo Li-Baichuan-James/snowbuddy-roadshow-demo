@@ -1,14 +1,18 @@
 import { DemoMap } from "../components/DemoMap";
 import { HudDisplay } from "../components/HudDisplay";
+import type { CompassHeading } from "../hooks/useCompassHeading";
 import type { DemoSession } from "../hooks/useDemoSession";
 import type { AppPage } from "../types";
 
 type MapPageProps = {
   session: DemoSession;
   navigate: (page: AppPage) => void;
+  compass: CompassHeading;
 };
 
-export function MapPage({ session, navigate }: MapPageProps) {
+export function MapPage({ session, navigate, compass }: MapPageProps) {
+  void compass;
+
   const selected = session.state.members.find((member) => member.id === session.state.selectedMemberId)
     ?? session.state.members.find((member) => member.role === "leader");
   const selectedName = selected?.name ?? "Ava";

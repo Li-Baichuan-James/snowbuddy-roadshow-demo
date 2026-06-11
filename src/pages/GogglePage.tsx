@@ -1,12 +1,16 @@
 import { GogglePreview } from "../components/GogglePreview";
 import { StatusPill } from "../components/StatusPill";
+import type { CompassHeading } from "../hooks/useCompassHeading";
 import type { DemoSession } from "../hooks/useDemoSession";
 
 type GogglePageProps = {
   session: DemoSession;
+  compass: CompassHeading;
 };
 
-export function GogglePage({ session }: GogglePageProps) {
+export function GogglePage({ session, compass }: GogglePageProps) {
+  void compass;
+
   return (
     <div className="page-stack goggle-page">
       <header className="page-header">
