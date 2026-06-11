@@ -1,11 +1,17 @@
 export type HudArrow = "↑" | "↗" | "→" | "↘" | "↓" | "↙" | "←" | "↖";
 
+export type MapTarget = {
+  mapX: number;
+  mapY: number;
+};
+
 export type HudPayload = {
   mode: "follow" | "meet" | "sos" | "voice";
   label: string;
   arrow: HudArrow;
   distanceMeters?: number;
   messageLabel?: string;
+  target?: MapTarget;
 };
 
 export type LocalParticipant = {
