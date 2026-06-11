@@ -377,6 +377,65 @@ button:disabled {
   color: var(--primary);
 }
 
+.curved-arrow {
+  display: block;
+  overflow: visible;
+  color: var(--primary);
+}
+
+.curved-arrow-standard {
+  width: min(46vw, 190px);
+  height: min(46vw, 190px);
+}
+
+.curved-arrow-compact {
+  width: 112px;
+  height: 112px;
+}
+
+.curved-arrow-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.curved-arrow-line,
+.curved-arrow-glow {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.curved-arrow-line {
+  stroke-width: 5.4;
+}
+
+.curved-arrow-glow {
+  opacity: 0.22;
+  stroke-width: 13;
+}
+
+.curved-arrow-head {
+  fill: currentColor;
+}
+
+.curved-arrow.meet {
+  color: var(--meet);
+}
+
+.curved-arrow.sos {
+  color: oklch(0.82 0.14 25);
+}
+
+.curved-arrow.voice {
+  color: var(--primary);
+  opacity: 0.72;
+}
+
 .hud-display.sos .hud-arrow {
   color: oklch(0.82 0.14 25);
 }
