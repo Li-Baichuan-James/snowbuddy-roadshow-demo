@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { CurvedDirectionArrow } from "./CurvedDirectionArrow";
 
@@ -10,5 +12,9 @@ describe("CurvedDirectionArrow", () => {
 
     expect(arrow).toHaveAttribute("data-icon", "navigation");
     expect(arrow).toHaveStyle({ "--arrow-rotation": "-45deg" });
+  });
+
+  it("serves the navigation mask asset from the public images path", () => {
+    expect(existsSync(resolve("public/images/icons/navigation.svg"))).toBe(true);
   });
 });
