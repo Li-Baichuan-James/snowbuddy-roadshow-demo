@@ -5,7 +5,8 @@ export function memberToHud(member: DemoMember): HudPayload {
     mode: "follow",
     label: `FOLLOW ${member.name.toUpperCase()}`,
     arrow: member.arrow,
-    distanceMeters: member.distanceMeters
+    distanceMeters: member.distanceMeters,
+    target: { mapX: member.mapX, mapY: member.mapY }
   };
 }
 
@@ -14,7 +15,8 @@ export function meetToHud(meet: DemoMeet): HudPayload {
     mode: "meet",
     label: meet.label,
     arrow: meet.arrow,
-    distanceMeters: meet.distanceMeters
+    distanceMeters: meet.distanceMeters,
+    target: { mapX: meet.mapX, mapY: meet.mapY }
   };
 }
 
@@ -23,7 +25,8 @@ export function sosToHud(sos: DemoSos): HudPayload {
     mode: "sos",
     label: `SOS FROM ${sos.senderName.toUpperCase()}`,
     arrow: sos.arrow,
-    distanceMeters: sos.distanceMeters
+    distanceMeters: sos.distanceMeters,
+    target: { mapX: sos.mapX, mapY: sos.mapY }
   };
 }
 
