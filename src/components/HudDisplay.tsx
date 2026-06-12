@@ -5,7 +5,7 @@ import type { HudPayload } from "../types";
 import { CurvedDirectionArrow } from "./CurvedDirectionArrow";
 import { StatusPill } from "./StatusPill";
 
-const MIC_ICON_PATH = "/images/icons/麦克风.svg";
+const MIC_ICON_PATH = "/images/icons/50麦克风.svg";
 
 type HudDisplayProps = {
   hud: HudPayload;
