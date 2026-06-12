@@ -47,6 +47,26 @@ describe("SnowBuddy roadshow flow", () => {
     expect(screen.getByRole("button", { name: /resolve sos/i })).toBeInTheDocument();
   });
 
+  it("shows a walkie-talkie style microphone while holding Voice Check", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+
+    await user.click(screen.getByRole("button", { name: /join demo/i }));
+
+    expect(screen.getByRole("img", { name: /direction cue/i })).toBeInTheDocument();
+
+    const voiceButton = screen.getByRole("button", { name: /^voice check$/i });
+    await user.pointer({ keys: "[MouseLeft>]", target: voiceButton });
+
+    expect(screen.getByRole("img", { name: /voice check active/i })).toBeInTheDocument();
+    expect(screen.queryByRole("img", { name: /direction cue/i })).not.toBeInTheDocument();
+
+    await user.pointer({ keys: "[/MouseLeft]", target: voiceButton });
+
+    expect(screen.getByRole("img", { name: /direction cue/i })).toBeInTheDocument();
+    expect(screen.queryByRole("img", { name: /voice check active/i })).not.toBeInTheDocument();
+  });
+
   it("makes team selection and map-to-HUD relationship explicit", async () => {
     render(<App />);
 

@@ -22,7 +22,7 @@ export function HomePage({ session, navigate, compass }: HomePageProps) {
         <button type="button" className="secondary-button" onClick={() => navigate("goggle")}>Preview</button>
       </header>
 
-      <HudDisplay hud={session.hud} compass={compass} />
+      <HudDisplay hud={session.hud} compass={compass} voiceHolding={session.voiceHolding} />
       <ActionPanel session={session} />
 
       {session.state.activeVoice && (

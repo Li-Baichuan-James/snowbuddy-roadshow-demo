@@ -10,6 +10,7 @@ export function useDemoSession(participant: LocalParticipant | null, page: AppPa
   const [state, setState] = useState<AppState>(() => createInitialDemoState(participant?.displayName ?? "Alex"));
   const [feedback, setFeedback] = useState("Signal simulated");
   const [voicePlayed, setVoicePlayed] = useState(false);
+  const [voiceHolding, setVoiceHolding] = useState(false);
 
   useEffect(() => {
     if (!participant) return;
@@ -83,6 +84,7 @@ export function useDemoSession(participant: LocalParticipant | null, page: AppPa
 
   function triggerVoice() {
     setVoicePlayed(false);
+    setVoiceHolding(false);
     setState((current) => ({
       ...current,
       activeVoice: {
@@ -101,17 +103,30 @@ export function useDemoSession(participant: LocalParticipant | null, page: AppPa
     setFeedback("Simulated voice played");
   }
 
+  function startVoiceHold() {
+    setVoiceHolding(true);
+    setFeedback("Voice check live");
+  }
+
+  function endVoiceHold() {
+    setVoiceHolding(false);
+    setFeedback("Signal simulated");
+  }
+
   return {
     state,
     hud,
     feedback,
     voicePlayed,
+    voiceHolding,
     selectMember,
     triggerMeet,
     clearMeet,
     triggerSos,
     resolveSos,
     triggerVoice,
-    playVoice
+    playVoice,
+    startVoiceHold,
+    endVoiceHold
   };
 }

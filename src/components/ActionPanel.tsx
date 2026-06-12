@@ -19,6 +19,12 @@ export function ActionPanel({ session }: ActionPanelProps) {
     setSosOpen(false);
   }
 
+  function endVoiceHold() {
+    if (session.voiceHolding) {
+      session.endVoiceHold();
+    }
+  }
+
   return (
     <section className="panel actions-panel" aria-labelledby="actions-title">
       <div className="section-heading stacked-heading">
@@ -36,7 +42,25 @@ export function ActionPanel({ session }: ActionPanelProps) {
           <OctagonAlert size={20} aria-hidden="true" />
           <span>SOS</span>
         </button>
-        <button type="button" className="action-button voice" onClick={session.triggerVoice}>
+        <button
+          type="button"
+          className="action-button voice"
+          aria-pressed={session.voiceHolding}
+          onPointerDown={session.startVoiceHold}
+          onPointerUp={endVoiceHold}
+          onPointerCancel={endVoiceHold}
+          onPointerLeave={endVoiceHold}
+          onKeyDown={(event) => {
+            if ((event.key === " " || event.key === "Enter") && !session.voiceHolding) {
+              session.startVoiceHold();
+            }
+          }}
+          onKeyUp={(event) => {
+            if (event.key === " " || event.key === "Enter") {
+              endVoiceHold();
+            }
+          }}
+        >
           <Mic2 size={20} aria-hidden="true" />
           <span>Voice Check</span>
         </button>
